@@ -2,10 +2,10 @@
 #include "../mood_tracker.h"
 
 typedef enum {
-    InputEventNext = 100,
-    InputEventSave,
-    InputEventCancel,
-} InputEvent;
+    MoodInputEventNext = 100,
+    MoodInputEventSave,
+    MoodInputEventCancel,
+} MoodInputCustomEvent;
 
 // Called by TextInput when the user confirms the note
 void mood_input_note_callback(void* ctx);

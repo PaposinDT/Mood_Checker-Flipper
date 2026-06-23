@@ -83,7 +83,6 @@ bool mood_csv_import(MoodTrackerApp* app, const char* path) {
             int mood_i, stress_i, energy_i, primary_i;
 
             // Use a custom CSV split to handle note with semicolons
-            char* tok;
             char tmp[192];
             strncpy(tmp, line, sizeof(tmp) - 1);
 

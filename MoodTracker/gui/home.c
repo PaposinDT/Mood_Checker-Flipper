@@ -1,5 +1,6 @@
 #include "home.h"
 #include "../quotes/quotes.h"
+#include "../storage/database.h"
 #include <gui/view.h>
 #include <gui/elements.h>
 
@@ -151,7 +152,7 @@ void home_view_refresh(MoodTrackerApp* app) {
     HomeViewModel* model = view_get_model(view);
 
     // Today's entry
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
     uint32_t today_key = PACK_DATE(now.year, now.month, now.day);
 

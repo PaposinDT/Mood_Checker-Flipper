@@ -160,7 +160,7 @@ void calendar_view_refresh(MoodTrackerApp* app) {
     View* view = app->view_calendar;
     CalendarViewModel* m = view_get_model(view);
 
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
 
     // Compute displayed month from offset

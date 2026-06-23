@@ -76,7 +76,7 @@ void mood_streak_compute(MoodTrackerApp* app) {
     app->stats.longest_streak = longest;
 
     // Current streak backwards from today
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
     uint32_t today    = date_to_days(now.year, now.month, now.day);
     uint32_t streak   = 0;

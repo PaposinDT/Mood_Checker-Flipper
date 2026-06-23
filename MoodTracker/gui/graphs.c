@@ -189,7 +189,7 @@ void graph_view_refresh(MoodTrackerApp* app) {
     GraphViewModel* m = view_get_model(view);
 
     // Collect last N days of aggregated data
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
 
     // Compute from_key (today - graph_days_shown)

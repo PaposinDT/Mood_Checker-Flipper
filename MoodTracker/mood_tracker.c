@@ -274,7 +274,7 @@ void mood_scene_input_on_enter(void* ctx) {
     app->pending_entry.mood   = 5;
     app->pending_entry.stress = 5;
     app->pending_entry.energy = 5;
-    FuriHalRtcDateTime dt;
+    DateTime dt;
     furi_hal_rtc_get_datetime(&dt);
     app->pending_entry.year   = dt.year;
     app->pending_entry.month  = dt.month;
@@ -290,7 +290,7 @@ bool mood_scene_input_on_event(void* ctx, SceneManagerEvent event) {
     bool consumed = false;
     if(event.type == SceneManagerEventTypeCustom) {
         switch(event.event) {
-            case InputEventNext:
+            case MoodInputEventNext:
                 app->input_step++;
                 if(app->input_step >= 3) {
                     // All three values collected → go to note scene
@@ -310,7 +310,7 @@ void mood_scene_input_on_exit(void* ctx) { UNUSED(ctx); }
 
 // ── InputNote (TextInput) ─────────────────────────────────────────────────────
 // FIX: configure TextInput properly and switch to MoodViewTextInput (not Input).
-// FIX: InputEventSave is handled HERE, not in the Input scene.
+// FIX: MoodInputEventSave is handled HERE, not in the Input scene.
 
 void mood_scene_input_note_on_enter(void* ctx) {
     MoodTrackerApp* app = ctx;
@@ -322,7 +322,7 @@ void mood_scene_input_note_on_enter(void* ctx) {
     text_input_set_header_text(app->text_input, "Note (optional, OK to skip)");
     text_input_set_result_callback(
         app->text_input,
-        mood_input_note_callback,   // calls view_dispatcher_send_custom_event(InputEventSave)
+        mood_input_note_callback,   // calls view_dispatcher_send_custom_event(MoodInputEventSave)
         app,
         app->pending_entry.note,
         MOOD_NOTE_MAX_LEN,
@@ -337,7 +337,7 @@ bool mood_scene_input_note_on_event(void* ctx, SceneManagerEvent event) {
     bool consumed = false;
 
     if(event.type == SceneManagerEventTypeCustom &&
-       event.event == InputEventSave) {
+       event.event == MoodInputEventSave) {
         // Determine primary flag
         uint32_t today = PACK_DATE(
             app->pending_entry.year,

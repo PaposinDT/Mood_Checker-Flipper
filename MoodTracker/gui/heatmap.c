@@ -108,7 +108,7 @@ static void heatmap_draw_callback(Canvas* canvas, void* model_v) {
     canvas_set_font(canvas, FontSecondary);
     canvas_draw_str_aligned(canvas, 64, 0, AlignCenter, AlignTop, "HEATMAP");
 
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
 
     uint32_t today_n  = date_to_days(now.year, now.month, now.day);

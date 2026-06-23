@@ -182,5 +182,4 @@ int32_t mood_tracker_app(void* p);
 #define UNPACK_MONTH(k)      (((k) % 10000u) / 100u)
 #define UNPACK_DAY(k)        ((k) % 100u)
 
-#define CLAMP(v, lo, hi)     ((v) < (lo) ? (lo) : (v) > (hi) ? (hi) : (v))
 #define ARRAY_SIZE(a)        (sizeof(a) / sizeof((a)[0]))

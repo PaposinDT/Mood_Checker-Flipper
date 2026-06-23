@@ -143,7 +143,7 @@ static bool input_input_callback(InputEvent* event, void* ctx) {
                 break;
             case InputKeyOk:
                 view_dispatcher_send_custom_event(
-                    app->view_dispatcher, InputEventNext);
+                    app->view_dispatcher, MoodInputEventNext);
                 consumed = true;
                 break;
             default:
@@ -159,7 +159,7 @@ static bool input_input_callback(InputEvent* event, void* ctx) {
 
 void mood_input_note_callback(void* ctx) {
     MoodTrackerApp* app = ctx;
-    view_dispatcher_send_custom_event(app->view_dispatcher, InputEventSave);
+    view_dispatcher_send_custom_event(app->view_dispatcher, MoodInputEventSave);
 }
 
 // ─── Alloc / Free / Refresh ──────────────────────────────────────────────────

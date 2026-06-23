@@ -152,7 +152,7 @@ void mood_stats_weekly(MoodTrackerApp* app, MoodDayStats* out, uint8_t n_weeks) 
         out[w].entry_count = 0;
     }
 
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
 
     uint32_t today_n = date_to_days(now.year, now.month, now.day);
@@ -195,7 +195,7 @@ void mood_stats_weekly(MoodTrackerApp* app, MoodDayStats* out, uint8_t n_weeks) 
 // ─── Monthly aggregation ──────────────────────────────────────────────────────
 
 void mood_stats_monthly(MoodTrackerApp* app, MoodDayStats* out, uint8_t n_months) {
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
 
     for(int m = 0; m < n_months; m++) {

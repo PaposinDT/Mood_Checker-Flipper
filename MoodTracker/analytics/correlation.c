@@ -10,7 +10,7 @@ void mood_correlation_compute(MoodTrackerApp* app, MoodCorrelation* out, uint32_
     float energy_arr[MOOD_MAX_ENTRIES];
     uint32_t count = 0;
 
-    FuriHalRtcDateTime now;
+    DateTime now;
     furi_hal_rtc_get_datetime(&now);
     uint32_t today_approx = (uint32_t)now.year * 10000 + now.month * 100 + now.day;
 
