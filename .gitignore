@@ -1,0 +1,8 @@
+# Build artifacts
+build/
+dist/
+*.fap
+
+# Python
+__pycache__/
+*.pyc
