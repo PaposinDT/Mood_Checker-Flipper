@@ -1,0 +1,35 @@
+name: Build Flipper FAP
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uFBT
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install ufbt
+
+      - name: Build FAP
+        working-directory: MoodTracker
+        run: ufbt build
+
+      - name: Copy artifact
+        run: |
+          mkdir -p dist
+          cp /home/runner/.ufbt/build/mood_tracker.fap dist/mood_tracker.fap
+
+      - name: Upload FAP artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mood_tracker-fap
+          path: dist/mood_tracker.fap
